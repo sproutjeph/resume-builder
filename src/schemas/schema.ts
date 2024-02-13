@@ -17,3 +17,8 @@ export const headerSchema = z.object({
   socialLink2: z.string().optional(),
   socialLink3: z.string().optional(),
 });
+export const aboutSchema = z.object({
+  about: z.string().min(10, {
+    message: "About section must be at least 20 characters.",
+  }),
+});

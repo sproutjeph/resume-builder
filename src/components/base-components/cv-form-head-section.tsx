@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import { Plus } from "lucide-react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -16,12 +15,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { headerSchema } from "@/schemas/HeaderSchema";
+import { headerSchema } from "@/schemas/schema";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 interface CvFormProps {}
 
-const CvForm: FC<CvFormProps> = () => {
+const CvFormHeadSection: FC<CvFormProps> = () => {
   const form = useForm<z.infer<typeof headerSchema>>({
     resolver: zodResolver(headerSchema),
     defaultValues: {
@@ -107,14 +106,35 @@ const CvForm: FC<CvFormProps> = () => {
               name="socialLink1"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Add Social Link(s)</FormLabel>
+                  <FormLabel>Add Social Link</FormLabel>
                   <FormControl>
-                    <div className="flex gap-2">
-                      <Input placeholder="https://github.com" {...field} />
-                      <Button size="icon" type="button" variant="outline">
-                        <Plus />
-                      </Button>
-                    </div>
+                    <Input placeholder="https://github.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="socialLink2"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Add Social Link</FormLabel>
+                  <FormControl>
+                    <Input placeholder="https://linkedin.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="socialLink3"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Add Social Link</FormLabel>
+                  <FormControl>
+                    <Input placeholder="https://youtub.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -130,4 +150,4 @@ const CvForm: FC<CvFormProps> = () => {
   );
 };
 
-export default CvForm;
+export default CvFormHeadSection;
