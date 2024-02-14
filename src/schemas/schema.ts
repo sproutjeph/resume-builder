@@ -22,3 +22,18 @@ export const aboutSchema = z.object({
     message: "About section must be at least 20 characters.",
   }),
 });
+
+export const workSchema = z.object({
+  company: z.string().min(2, {
+    message: "name must be at least 2 characters.",
+  }),
+  jobType: z.string().min(10, {
+    message: "Summary must be at least 10 characters.",
+  }),
+  position: z.string().email({
+    message: "Please enter a valid email",
+  }),
+  descprition: z.string().min(8, {
+    message: "Please enter a valid phone number",
+  }),
+});
